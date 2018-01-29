@@ -1,0 +1,117 @@
+import requests
+import json
+url = "https://www.throughbit.com/tbit_ci/index.php/cryptoprice/type/BTC/INR"
+response = requests.get(url)
+data = response.content
+#print(data)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[6]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR5 = INR4.strip('"')
+a = INR5
+
+#print("bitcoin buying price in troughbit")
+print("bitcoin buying price of troughbit:",a)
+url = "https://www.throughbit.com/tbit_ci/index.php/cryptoprice/type/BTC/INR"
+response = requests.get(url)
+data = response.content
+#print(data)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split('"')
+INR2 = INR1[21]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR5 = INR4.strip(':')
+INR6 = INR5.split('}')
+INR7 = INR6[0]
+b = INR7
+#print("bitcoin selling price in troughbit")
+print("bitcoin selling price of troughbit:",b)
+#print("coinBase bitCoin buying price in USD")
+data = requests.get("https://community-coinbase.p.mashape.com/prices/buy?api_key=WuHXU1O17qLCzsoI",
+  headers={
+    "X-Mashape-Key": "Ejm5wx8Wu0mshuTbUpPSGOF0q5QJp1xAMM2jsnwjiWFQv4s6SQ",
+    "Accept": "application/json"
+  }
+)
+USDPrice = data.content
+#print(USDPrice)
+UP = USDPrice.decode("utf-8")
+UP1 = UP.split(":")
+UP2 = UP1[20].split(",")
+USD = UP2[0]
+USD1 = USD.strip('"')
+#print(USD1)
+url = "https://v3.exchangerate-api.com/bulk/ec270be7fdb11c97eb23d948/USD"
+response = requests.get(url)
+data = response.text
+parsed = json.loads(data)
+inr_rate = parsed["rates"]["INR"]
+#print(inr_rate)
+INRprice = float(USD1) * parsed["rates"]["INR"]
+c = INRprice
+print("coinBase bitCoin buying price in INR:",c)
+#print("coinBase bitCoin selling price in USD")
+data = requests.get("https://community-coinbase.p.mashape.com/prices/sell?api_key=WuHXU1O17qLCzsoI",
+  headers={
+    "X-Mashape-Key": "Ejm5wx8Wu0mshuTbUpPSGOF0q5QJp1xAMM2jsnwjiWFQv4s6SQ",
+    "Accept": "application/json"
+  }
+)
+USDPrice1 = data.content
+#print(USDPrice1)
+UP = USDPrice1.decode("utf-8")
+UP1 = UP.split(":")
+UP2 = UP1[20].split(",")
+USD = UP2[0]
+USD1 = USD.strip('"')
+#print(USD1)
+url = "https://v3.exchangerate-api.com/bulk/ec270be7fdb11c97eb23d948/USD"
+response = requests.get(url)
+data = response.text
+parsed = json.loads(data)
+inr_rate = parsed["rates"]["INR"]
+#print(inr_rate)
+INRprice1 = float(USD1) * parsed["rates"]["INR"]
+d = INRprice1
+print("coinBase bitCoin selling price in INR:",d)
+url = "https://koinex.in/api/ticker"
+response = requests.get(url)
+data = response.content
+#print(data)
+INRprice = data.decode("utf-8")
+INRprice1 = INRprice.split('"')
+INRprice2 = INRprice1[5]
+INRprice3 = INRprice2.split(':')
+INRprice4 = INRprice3[0]
+INRprice5 = INRprice4.strip('{')
+e = INRprice5
+print("bitcoin buying price in koinex:",e)
+#print(INRprice5)
+url = "https://koinex.in/api/ticker"
+response = requests.get(url)
+data = response.content
+#print(data)
+INRprice = data.decode("utf-8")
+INRprice1 = INRprice.split('"')
+INRprice2 = INRprice1[5]
+INRprice3 = INRprice2.split(':')
+INRprice4 = INRprice3[0]
+INRprice6 = INRprice4.strip('{')
+f = INRprice6
+print("bitcoin selling price in koinex:",f)
+#print(INRprice4) 
+if float(a)  <= float(c):
+    print(" throughbit is the  lowest cost for buying the bitcoin :",a)
+elif  float(c) <= float(e):
+        print("coinbase is the  lowest cost for buying the bitcoin:",c)
+elif float(e) <= float(a):
+     print("koinex is the  lowest cost for buying the bitcoin:",e)
+if float(b) >= float(d)>= float(f):
+            print("troughtbit is the  heighest cost for selling the bitcoin:",b)
+elif float(d) >= float(f)>= float(b):
+        print("coinbase is the  heighest cost for selling the bitcoin :",d)
+elif  float(f)>= float(b)>= float(d) :
+         print("koinex  is the  heighest cost for selling the bitcoin :",f)     
