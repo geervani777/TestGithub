@@ -1,0 +1,53 @@
+import requests
+payload = {'currency': 'BTCINRF', 'value': '7'}
+#r = requests.post("https://www.throughbit.com/tbit_ci/index.php/graph", data=payload)
+#print(r.text)
+response = requests.post("https://www.throughbit.com/tbit_ci/index.php/graph", data = payload)
+data = response.content
+print(data)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[7]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR5 = INR4.strip('"')
+x = INR5
+#print(x)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[5]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR6 = INR4.strip('"')
+y = INR6
+#print(y)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[12]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR7 = INR4.strip('"')
+x = INR7
+#print(x)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[10]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR8 = INR4.strip('"')
+y = INR8
+#print(y)
+import plotly
+from plotly.graph_objs import Scatter, Layout
+import matplotlib.pyplot as plt
+plt.plot(x, y, color='green', linestyle='dashed', linewidth = 3,
+         marker='o', markerfacecolor='blue', markersize=12)
+
+#plotly.offline.init_notebook_mode(connected=True)
+
+plotly.offline.plot({
+    "data": [Scatter(x=[INR5,INR7],
+                     y=[INR6,INR8])],
+    "layout": Layout(title="Throughbit")
+})
+plt.show()
