@@ -1,0 +1,230 @@
+import requests
+payload = {'currency': 'BTCINRF', 'value': '5'}
+#r = requests.post("https://www.throughbit.com/tbit_ci/index.php/graph", data=payload)
+#print(r.text)
+response = requests.post("https://www.throughbit.com/tbit_ci/index.php/graph", data = payload)
+data = response.content
+#print(data)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[7]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR5 = INR4.strip('"')
+x = INR5
+#print(x)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[5]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR6 = INR4.strip('"')
+y = INR6
+#print(y)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[12]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR7 = INR4.strip('"')
+x = INR7
+#print(x)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[10]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR8 = INR4.strip('"')
+y = INR8
+#print(y)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[17]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR9 = INR4.strip('"')
+x = INR9
+#print(x)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[15]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR10 = INR4.strip('"')
+y = INR10
+#print(y)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[22]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR11 = INR4.strip('"')
+x = INR11
+#print(x)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[20]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR12 = INR4.strip('"')
+y = INR12
+#print(y)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[27]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR13 = INR4.strip('"')
+x = INR13
+#print(x)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[25]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR14 = INR4.strip('"')
+y = INR14
+#print(y)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[32]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR15 = INR4.strip('"')
+x = INR15
+#print(x)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[30]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR16 = INR4.strip('"')
+y = INR16
+#print(y)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[37]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR17 = INR4.strip('"')
+x = INR17
+#print(x)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[35]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR18 = INR4.strip('"')
+y = INR18
+#print(y)
+
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[42]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR19 = INR4.strip('"')
+x = INR19
+#print(x)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[40]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR20 = INR4.strip('"')
+y = INR20
+#print(y)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[47]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR21 = INR4.strip('"')
+x = INR21
+#print(x)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[45]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR22 = INR4.strip('"')
+y = INR22
+#print(y)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[52]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR23 = INR4.strip('"')
+x = INR23
+#print(x)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[50]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR24 = INR4.strip('"')
+y = INR24
+#print(y)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[57]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR25 = INR4.strip('"')
+x = INR25
+#print(x)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[55]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR26 = INR4.strip('"')
+y = INR26
+#print(y)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[62]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR27 = INR4.strip('"')
+x = INR27
+#print(x)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[60]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR28 = INR4.strip('"')
+y = INR28
+#print(y)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[67]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR29 = INR4.strip('"')
+x = INR29
+#print(x)
+INRprice = data.decode("utf-8")
+INR1 = INRprice.split(':')
+INR2 = INR1[65]
+INR3 = INR2.split(',')
+INR4 = INR3[0]
+INR30 = INR4.strip('"')
+y = INR30
+#print(y)
+
+
+import plotly
+from plotly.graph_objs import Scatter, Layout
+
+#plotly.offline.init_notebook_mode(connected=True)
+
+plotly.offline.plot({
+    "data": [Scatter(x=[INR5,INR7,INR9,INR11,INR13,INR15,INR17,INR19,INR21,INR23,INR25,INR27,INR29],
+                     y=[INR6,INR8,INR10,INR12,INR14,INR16,INR18,INR20,INR22,INR24,INR26,INR28,INR30])],
+    "layout": Layout(title="Throughbit")
+})
+
+
