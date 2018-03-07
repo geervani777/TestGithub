@@ -1,0 +1,135 @@
+import logging
+import requests
+import string
+import inflect
+import json
+from flask import Flask,redirect,url_for
+from flask_ask import Ask, statement, question
+p = inflect.engine()
+app = Flask(__name__)
+ask = Ask(app, "/")
+log = logging.getLogger()
+log.addHandler(logging.StreamHandler())
+log.setLevel(logging.DEBUG)
+logging.getLogger("flask_ask").setLevel(logging.DEBUG)
+@app.route('/')
+def homepage():
+    return "Hi, welcome to throughbit?"
+@ask.launch
+def launch():
+    return question("Hi,Welcome to throughbit. Do you want bitcoin information or ether or lisk ?")
+@ask.intent("YesIntent")
+def yes():
+     url = "https://www.throughbit.com/tbit_ci/index.php/cryptoprice/type/BTC/INR"
+    headers = {'content-type': 'application/json'}
+    response = requests.get(url, headers=headers)
+    data = response.content
+    INRprice = data.decode("utf-8")
+    INR1 = INRprice.split('"')
+    INR2 = INR1[21]
+    INR3 = INR2.split(',')
+    INR4 = INR3[0]
+    INR5 = INR4.strip(':')
+    INR6 = INR5.split('}')
+    INR7 = INR6[0]
+    url = "https://www.throughbit.com/tbit_ci/index.php/cryptoprice/type/BTC/INR"
+    headers = {'content-type': 'application/json'}
+    response = requests.get(url, headers=headers)
+    data = response.content
+    INRprice = data.decode("utf-8")
+    INR1 = INRprice.split(':')
+    INR2 = INR1[6]
+    INR3 = INR2.split(',')
+    INR4 = INR3[0]
+    INR5 = INR4.strip('"')
+    return statement("Todays bitcoin buying price in throughbit is"+ p.number_to_words(INR5) + "And todays bitcoin selling price in throughbit is"+  p.number_to_words(INR7))
+    @ask.intent("EtherIntent")
+def ether():
+    url ="https://www.throughbit.com/tbit_ci/index.php/cryptoprice/type/ETH/INR"
+    headers = {'content-type': 'application/json'}
+    response = requests.get(url, headers=headers)
+    data = response.content
+    INRprice = data.decode("utf-8")
+    INR1 = INRprice.split(':')
+    INR2 = INR1[6]
+    INR3 = INR2.split(',')
+    INR4 = INR3[0]
+    INR5 = INR4.strip('"')
+    x = INR5
+    url ="https://www.throughbit.com/tbit_ci/index.php/cryptoprice/type/ETH/INR"
+    headers = {'content-type': 'application/json'}
+    response = requests.get(url, headers=headers)
+    data = response.content
+    INRprice = data.decode("utf-8")
+    INR1 = INRprice.split('"')
+    INR2 = INR1[21]
+    INR3 = INR2.split(',')
+    INR4 = INR3[0]
+    INR5 = INR4.strip(':')
+    INR6 = INR5.split('}')
+    INR7 = INR6[0]
+    y = INR7
+
+    return statement("Todays ether buying price in throughbit is"+ p.number_to_words(x) + "And todays ether selling price in throughbit is"+  p.number_to_words(y))
+@ask.intent("LiskIntent")
+def lisk():
+    url ="https://www.throughbit.com/tbit_ci/index.php/cryptoprice/type/LSK/INR"
+    headers = {'content-type': 'application/json'}
+    response = requests.get(url, headers=headers)
+    data = response.content
+    INRprice = data.decode("utf-8")
+    INR1 = INRprice.split('"')
+    INR2 = INR1[21]
+    INR3 = INR2.split(',')
+    INR4 = INR3[0]
+    INR5 = INR4.strip(':')
+    INR6 = INR5.split('}')
+    INR7 = INR6[0]
+    url ="https://www.throughbit.com/tbit_ci/index.php/cryptoprice/type/LSK/INR"
+    headers = {'content-type': 'application/json'}
+    response = requests.get(url, headers=headers)
+    data = response.content
+    INRprice = data.decode("utf-8")
+    INR1 = INRprice.split(':')
+    INR2 = INR1[6]
+    INR3 = INR2.split(',')
+    INR4 = INR3[0]
+    INR5 = INR4.strip('"')
+    return statement("Todays lisk buying price in throughbit is"+ p.number_to_words(INR5) + "And todays lisk selling price in throughbit is"+  p.number_to_words(INR7))
+@ask.intent("NoIntent")
+def no_intent():
+    bye_text = "I am not sure why you asked me to run then, but okay... bye"
+    return statement(bye_text)
+@ask.intent("AMAZON.StopIntent")
+def stop():
+    return statement("Stopping")
+    
+
+sample intents for above program
+
+{
+  "intents": [
+    {
+      "intent": "YesIntent"
+    },
+    {
+      "intent": "EtherIntent"
+    },
+    {
+      "intent": "LiskIntent"
+    },
+    {
+      "intent": "NoIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    }
+  ]
+}
+sample utterance:
+
+YesIntent yes
+YesIntent bitcoin
+EtherIntent ether
+LiskIntent lisk
+NoIntent no
