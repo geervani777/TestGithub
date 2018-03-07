@@ -20,7 +20,7 @@ def launch():
     return question("Hi,Welcome to throughbit. Do you want bitcoin information or ether or lisk ?")
 @ask.intent("YesIntent")
 def yes():
-     url = "https://www.throughbit.com/tbit_ci/index.php/cryptoprice/type/BTC/INR"
+    url = "https://www.throughbit.com/tbit_ci/index.php/cryptoprice/type/BTC/INR"
     headers = {'content-type': 'application/json'}
     response = requests.get(url, headers=headers)
     data = response.content
