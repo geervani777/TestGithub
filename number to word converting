@@ -1,0 +1,2 @@
+from num2words import num2words
+num2words(110543, to='cardinal', lang='en_IN')
